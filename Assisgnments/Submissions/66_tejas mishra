@@ -1,1 +1,154 @@
+//program to print calaender
+#include <iostream>
+
+void print_month(int year, int month) {
+	const char* month_names[] = {"", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+
+	std::cout << "\n" << month_names[month] << " " << year << "\n";
+	std::cout << "Mo Tu We Th Fr Sa Su\n";
+
+	int weekday = (year * 365 + (year - 1) / 4 - (year - 1) / 100 + (year - 1) / 400 + month * 306 + 5) % 7;
+	int days_in_month = 0;
+
+	switch (month) {
+		case 4: case 6: case 9: case 11:
+			days_in_month = 30;
+			break;
+		case 2:
+			days_in_month = ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) ? 29 : 28;
+			break;
+		default:
+			days_in_month = 31;
+	}
+
+	for (int i = 0; i < (weekday + days_in_month); i++) {
+		if (i < weekday)
+			std::cout << " ";
+		else
+			std::cout << (i - weekday + 1) << ((i + 1) % 7 ? " " : "\n");
+	}
+}
+
+void print_calendar(int year) {
+	for (int month = 1; month <= 12; month++) {
+		print_month(year, month);
+	}
+}
+
+int main() {
+	int year = 2024;
+	print_calendar(year);
+	return 0;
+}
+
+
+//program to add  time 
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int hour1,minute1,second1;
+	
+	int hour2,minute2,second2;
+	
+	int hour,minute,second;
+
+	
+	cout<<"***Enter first time***"<<endl;
+	cout<<"Hours: "; cin>>hour1;
+	cout<<"Minutes: "; cin>>minute1;
+	cout<<"Seconds: "; cin>>second1;
+
+	
+	cout<<"***Enter second time***"<<endl;
+	cout<<"Hours: "; cin>>hour2;
+	cout<<"Minutes: "; cin>>minute2;
+	cout<<"Seconds: "; cin>>second2;
+
+	
+	second=second1+second2;
+	minute=minute1+minute2+(second/60);
+	hour=hour1+hour2+(minute/60);
+	minute=minute%60;
+	second=second%60;
+
+	
+	cout<<"Total Time is: "<<hour<<" hours "<<minute<<" minutes "<<second<< " seconds";
+
+	return 0;
+}
+
+
+// program to add n print two complex number
+
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+class Complex 
+{ 
+	
+	public: int real, imaginary;
+
+	
+	Complex(int tempReal = 0, 
+			int tempImaginary = 0)
+	{
+		real = tempReal;
+		imaginary = tempImaginary;
+	}
+
+	
+	Complex addComp(Complex C1, Complex C2)
+	{
+		
+		Complex temp;
+
+		
+		temp.real = C1.real + C2.real;
+
+		
+		temp.imaginary = (C1.imaginary + C2.imaginary);
+
+		
+		return temp;
+	}
+};
+
+
+int main()
+{
+	
+	Complex C1(3, 2);
+
+	
+	cout << "Complex number 1 : " << 
+			C1.real << " + i" << 
+			C1.imaginary << endl;
+
+	
+	Complex C2(9, 5);
+
+	
+	cout << "Complex number 2 : " << 
+			C2.real << " + i" << 
+			C2.imaginary << endl;
+
+	
+	Complex C3;
+
+	
+	C3 = C3.addComp(C1, C2);
+
+	
+	cout << "Sum of complex number : " << 
+			C3.real << " + i" << 
+			C3.imaginary;
+}
 
